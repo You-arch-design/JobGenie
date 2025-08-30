@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, MapPin, Clock, DollarSign, Users, Briefcase } from "lucide-react"
+import { Search, MapPin, Clock, DollarSign, Users, Briefcase, FileText, Sparkles, Target } from "lucide-react"
 import Link from "next/link"
 
 // Mock job data
@@ -96,6 +96,12 @@ export default function HomePage() {
             <div className="flex items-center gap-4">
               <Link href="/auth/login">
                 <Button variant="ghost">Sign In</Button>
+              </Link>
+              <Link href="/resume-analyzer">
+                <Button variant="outline">
+                  <FileText className="h-4 w-4 mr-2" />
+                  Resume Analyzer
+                </Button>
               </Link>
               <Link href="/auth/register">
                 <Button>Get Started</Button>
@@ -224,6 +230,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Resume Analyzer Section */}
+      <section className="py-16 bg-gradient-to-r from-secondary/20 to-accent/20">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+              <FileText className="h-8 w-8 text-primary" />
+              AI-Powered Resume Analysis
+            </h3>
+            <p className="text-xl text-muted-foreground mb-8">
+              Get instant feedback on your resume with our intelligent AI analyzer. Optimize for ATS systems, 
+              highlight key skills, and receive personalized improvement suggestions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/resume-analyzer">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  <Sparkles className="mr-2 h-5 w-5" />
+                  Try Resume Analyzer
+                </Button>
+              </Link>
+              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                <Target className="mr-2 h-5 w-5" />
+                Learn More
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
@@ -331,6 +365,19 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Resume Analyzer Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Link href="/resume-analyzer">
+          <Button 
+            size="lg" 
+            className="rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-primary text-primary-foreground"
+          >
+            <FileText className="h-5 w-5 mr-2" />
+            Resume AI
+          </Button>
+        </Link>
+      </div>
     </div>
   )
 }
